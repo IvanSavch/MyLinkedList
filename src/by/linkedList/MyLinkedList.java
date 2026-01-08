@@ -5,6 +5,18 @@ public class MyLinkedList<E> {
     private Node<E> last;
     private int size;
 
+    private void linkFirst(E e) {
+        Node<E> f = first;
+        final Node<E> newNode = new Node<>(null, f, e);
+        first = newNode;
+        if (f == null)
+            last = newNode;
+         else
+             f.prev = newNode;
+        size++;
+
+    }
+
     public E getFirst() {
         final Node<E> f = first;
         if (f == null) {
@@ -13,10 +25,10 @@ public class MyLinkedList<E> {
         return f.item;
     }
 
-    public E getLast(){
+    public E getLast() {
         final Node<E> l = last;
-        if (last == null){
-            throw  new RuntimeException();
+        if (last == null) {
+            throw new RuntimeException();
         }
         return l.item;
     }
@@ -25,18 +37,21 @@ public class MyLinkedList<E> {
         return size;
     }
 
+    public void addFirst(E el) {
+        linkFirst(el);
+    }
+
     private static class Node<E> {
         private Node<E> first;
-        private Node<E> last;
+        private Node<E> prev;
         private E item;
 
-        public Node(Node<E> first, Node<E> last, E item) {
+        public Node(Node<E> prev, Node<E> first, E item) {
             this.first = first;
-            this.last = last;
+            this.prev = prev;
             this.item = item;
         }
     }
-
 
 }
 
