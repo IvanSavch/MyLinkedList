@@ -17,6 +17,16 @@ public class MyLinkedList<E> {
 
     }
 
+    private void linkLast(E e){
+        Node<E> l = last;
+        Node<E> newNode = new Node<>(l,null,e);
+        last = newNode;
+        if (l == null)
+            first = newNode;
+        else l.first = newNode;
+        size++;
+    }
+
     public E getFirst() {
         final Node<E> f = first;
         if (f == null) {
@@ -40,6 +50,7 @@ public class MyLinkedList<E> {
     public void addFirst(E el) {
         linkFirst(el);
     }
+
 
     private static class Node<E> {
         private Node<E> first;
