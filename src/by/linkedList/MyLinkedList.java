@@ -50,6 +50,9 @@ public class MyLinkedList<E> {
     public void addFirst(E el) {
         linkFirst(el);
     }
+    public void addLast(E el){
+        linkLast(el);
+    }
 
 
     private static class Node<E> {
