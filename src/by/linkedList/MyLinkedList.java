@@ -1,5 +1,7 @@
 package by.linkedList;
 
+import java.util.LinkedList;
+
 public class MyLinkedList<E> {
     private Node<E> first;
     private Node<E> last;
@@ -15,6 +17,22 @@ public class MyLinkedList<E> {
              f.prev = newNode;
         size++;
 
+    }
+    Node<E> node(int index) {
+        if (index < (size >> 1)) {
+            Node<E> x = first;
+            for (int i = 0; i < index; i++)
+                x = x.first;
+            return x;
+        } else {
+            Node<E> x = last;
+            for (int i = size - 1; i > index; i--)
+                x = x.prev;
+            return x;
+        }
+    }
+    public E get(int index){
+        return node(index).item;
     }
 
     private void linkLast(E e){
@@ -53,6 +71,8 @@ public class MyLinkedList<E> {
     public void addLast(E el){
         linkLast(el);
     }
+
+
 
 
     private static class Node<E> {
